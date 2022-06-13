@@ -9,6 +9,11 @@ import CityNameInput from './CityNameInput';
 import City from './City';
 
 function App() {
+  const [skylineID, setSkylineID] = useState('');
+  const [waterfrontID, setWaterfrontID] = useState('');
+  const [castleID, setCastleID] = useState('');
+  const [cityName, setCityName] = useState('St. Louis');
+
   // track some state here.
   // You'll need to keep track of a skylineId, waterfrontId, and castleId. All these start out as 1
   // you'll need to track a city name, which starts as the city name of your choice.
@@ -16,13 +21,15 @@ function App() {
 
   return (
     <div className="App">
+      <City waterfront={waterfrontID} skyline={skylineID} castle={castleID} /> 
       {/* here, the City component takes in skylineId, waterfrontId, castleId as props. It'll use those ids to render pictures correctly. */}
       <h1>
         {/* dynamically update the city name here using state */}
-        Welcome to beautiful Portland!
+        Welcome to beautiful {cityName}!
       </h1>
       <div className='bottom'>
         {/* here, the CityNameInput component takes in the setCityName state handler function */}
+        <CityNameInput setCityName={setCityName}/>
         <section className='dropdowns'>
           {/* 
           render all three Dropdown components (WaterfrontDropdown, SkylineDropdown, CastleDropdown) here. 
