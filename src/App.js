@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+//import Dropdown from './Dropdown';
 import SkylineDropdown from './SkylineDropdown';
 import WaterfrontDropdown from './WaterfrontDropdown';
 import CastleDropdown from './CastleDropdown';
@@ -35,6 +36,7 @@ function App() {
           <WaterfrontDropdown setWaterfrontID={setWaterfrontID} />
           <SkylineDropdown setSkylineID={setSkylineID} />
           <CastleDropdown setCastleID={setCastleID} />
+          {/* <Dropdown waterfront={'waterfront'} skyline={'skyline'} castle={'castle'} setSkylineID={setSkylineID} setWaterfrontID={setWaterfrontID} setCastleID={setCastleID} /> */}
           {/* 
           render all three Dropdown components (WaterfrontDropdown, SkylineDropdown, CastleDropdown) here. 
           
