@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import Dropdown from './Dropdown';
+import Dropdown2 from './Dropdown2';
 import SkylineDropdown from './SkylineDropdown';
 import WaterfrontDropdown from './WaterfrontDropdown';
 import CastleDropdown from './CastleDropdown';
@@ -15,15 +15,20 @@ function App() {
   const [castleID, setCastleID] = useState('castle-1');
   const [cityName, setCityName] = useState('St. Louis');
   const [slogans, setSlogans] = useState([]);
-  const [dropdowns, setDropdowns] = useState([
-    { name: 'Waterfront', option1: 'Dock', option2: 'Sunset', option3: 'Boats' }, 
-    { name: 'Skyline', option1: 'Pink', option2: 'Busy', option3: 'Foggy' }, 
-    { name: 'Castle', option1: 'Serious', option2: 'Mysterious', option3: 'Regal' }]);
+  const waterfrontOptions = [{ value: 'waterfront-1', display: 'Dock' }, { value: 'waterfront-2', display: 'Sunset' }, { value: 'waterfront-3', display: 'Boats' }];
+  const skylineOptions = [{ value: 'skyline-1', display: 'Pink' }, { value: 'skyline-2', display: 'Busy' }, { value: 'skyline-3', display: 'foggy' }];
+  const castleOptions = [{ value: 'castle-1', display: 'Serious' }, { value: 'castle-2', display: 'Mysterious' }, { value: 'castle-3', display: 'Regal' }];
 
-  function handleChange(dropdown) {
-    setDropdowns(dropdown.target.value);
+  function skylineHandleChange(e) {
+    setSkylineID(e.target.value);
   }
-  // track some state here.
+  function waterfrontHandleChange(e) {
+    setWaterfrontID(e.target.value);
+  }
+  function castleHandleChange(e) {
+    setCastleID(e.target.value);
+  }
+        // track some state here.
   // You'll need to keep track of a skylineId, waterfrontId, and castleId. All these start out as 1
   // you'll need to track a city name, which starts as the city name of your choice.
   // finally, you'll need an array of slogans, which could start out as ['The City of Excellence'] for example
@@ -43,7 +48,9 @@ function App() {
           {/* <WaterfrontDropdown setWaterfrontID={setWaterfrontID} />
           <SkylineDropdown setSkylineID={setSkylineID} />
           <CastleDropdown setCastleID={setCastleID} /> */}
-          <Dropdown dropdowns={dropdowns} handleChange={handleChange} />
+          <Dropdown2 options={waterfrontOptions} handleChange={waterfrontHandleChange} theme={'Waterfront'} />
+          <Dropdown2 options={skylineOptions} handleChange={skylineHandleChange} theme={'Skyline'} />
+          <Dropdown2 options={castleOptions} handleChange={castleHandleChange} theme={'Castle'} />
           {/* 
           render all three Dropdown components (WaterfrontDropdown, SkylineDropdown, CastleDropdown) here. 
           
