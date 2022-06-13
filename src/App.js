@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import Dropdown2 from './Dropdown2';
-import SkylineDropdown from './SkylineDropdown';
-import WaterfrontDropdown from './WaterfrontDropdown';
-import CastleDropdown from './CastleDropdown';
 import SloganList from './SloganList';
 import SloganForm from './SloganForm';
 import CityNameInput from './CityNameInput';
