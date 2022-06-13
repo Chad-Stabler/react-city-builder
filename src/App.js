@@ -9,9 +9,9 @@ import CityNameInput from './CityNameInput';
 import City from './City';
 
 function App() {
-  const [skylineID, setSkylineID] = useState('');
-  const [waterfrontID, setWaterfrontID] = useState('');
-  const [castleID, setCastleID] = useState('');
+  const [skylineID, setSkylineID] = useState('skyline-1');
+  const [waterfrontID, setWaterfrontID] = useState('waterfront-1');
+  const [castleID, setCastleID] = useState('castle-1');
   const [cityName, setCityName] = useState('St. Louis');
 
   // track some state here.
@@ -31,6 +31,9 @@ function App() {
         {/* here, the CityNameInput component takes in the setCityName state handler function */}
         <CityNameInput setCityName={setCityName}/>
         <section className='dropdowns'>
+          <WaterfrontDropdown setWaterfrontID={setWaterfrontID} />
+          <SkylineDropdown setSkylineID={setSkylineID} />
+          <CastleDropdown setSkylineID={setCastleID} />
           {/* 
           render all three Dropdown components (WaterfrontDropdown, SkylineDropdown, CastleDropdown) here. 
           
