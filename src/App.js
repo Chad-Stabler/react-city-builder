@@ -33,7 +33,7 @@ function App() {
         <section className='dropdowns'>
           <WaterfrontDropdown setWaterfrontID={setWaterfrontID} />
           <SkylineDropdown setSkylineID={setSkylineID} />
-          <CastleDropdown setSkylineID={setCastleID} />
+          <CastleDropdown setCastleID={setCastleID} />
           {/* 
           render all three Dropdown components (WaterfrontDropdown, SkylineDropdown, CastleDropdown) here. 
           
