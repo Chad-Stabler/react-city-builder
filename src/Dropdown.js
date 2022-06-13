@@ -1,28 +1,16 @@
-export default function Dropdown({ waterfront, skyline, castle, setSkylineID, setWaterfrontID, setCastleID }) {
+export default function Dropdown({ dropdowns, handleChange }) {
   return (<div>
     <div>
-    Select a waterfront
-      <select onChange={e => setWaterfrontID(e.target.value)}>
-        <option value={`${waterfront}-1`}>Serious</option>
-        <option value={`${waterfront}-1`}>Mysterious</option>
-        <option value={`${waterfront}-1`}>Regal</option>
-      </select>
-    </div>
-    <div>
-    Select a skyline
-      <select onChange={e => setSkylineID(e.target.value)}>
-        <option value={`${skyline}-1`}>Pink</option>
-        <option value={`${skyline}-1`}>Busy</option>
-        <option value={`${skyline}-1`}>Foggy</option>
-      </select>
-    </div>
-    <div>
-    Select a waterfront
-      <select onChange={e => setCastleID(e.target.value)}>
-        <option value={`${castle}-1`}>Dock</option>
-        <option value={`${castle}-1`}>Sunset</option>
-        <option value={`${castle}-1`}>Boats</option>
-      </select>
+      {
+        dropdowns.map((dropdown, i) => <div key={dropdown + i}>
+          Select a {dropdown.name}:
+          <select onChange={() => handleChange(dropdown.name)} >
+            <option value={`${dropdown.name.toLowerCase()}-1`}>{dropdown.option1}</option>
+            <option value={`${dropdown.name.toLowerCase()}-2`}>{dropdown.option2}</option>
+            <option value={`${dropdown.name.toLowerCase()}-3`}>{dropdown.option3}</option>
+          </select>
+        </div>)
+      }
     </div>
   </div>);
 }

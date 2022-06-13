@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-//import Dropdown from './Dropdown';
+import Dropdown from './Dropdown';
 import SkylineDropdown from './SkylineDropdown';
 import WaterfrontDropdown from './WaterfrontDropdown';
 import CastleDropdown from './CastleDropdown';
@@ -15,7 +15,14 @@ function App() {
   const [castleID, setCastleID] = useState('castle-1');
   const [cityName, setCityName] = useState('St. Louis');
   const [slogans, setSlogans] = useState([]);
+  const [dropdowns, setDropdowns] = useState([
+    { name: 'Waterfront', option1: 'Dock', option2: 'Sunset', option3: 'Boats' }, 
+    { name: 'Skyline', option1: 'Pink', option2: 'Busy', option3: 'Foggy' }, 
+    { name: 'Castle', option1: 'Serious', option2: 'Mysterious', option3: 'Regal' }]);
 
+  function handleChange(dropdown) {
+    setDropdowns(dropdown.target.value);
+  }
   // track some state here.
   // You'll need to keep track of a skylineId, waterfrontId, and castleId. All these start out as 1
   // you'll need to track a city name, which starts as the city name of your choice.
@@ -33,10 +40,10 @@ function App() {
         {/* here, the CityNameInput component takes in the setCityName state handler function */}
         <CityNameInput setCityName={setCityName}/>
         <section className='dropdowns'>
-          <WaterfrontDropdown setWaterfrontID={setWaterfrontID} />
+          {/* <WaterfrontDropdown setWaterfrontID={setWaterfrontID} />
           <SkylineDropdown setSkylineID={setSkylineID} />
-          <CastleDropdown setCastleID={setCastleID} />
-          {/* <Dropdown waterfront={'waterfront'} skyline={'skyline'} castle={'castle'} setSkylineID={setSkylineID} setWaterfrontID={setWaterfrontID} setCastleID={setCastleID} /> */}
+          <CastleDropdown setCastleID={setCastleID} /> */}
+          <Dropdown dropdowns={dropdowns} handleChange={handleChange} />
           {/* 
           render all three Dropdown components (WaterfrontDropdown, SkylineDropdown, CastleDropdown) here. 
           
