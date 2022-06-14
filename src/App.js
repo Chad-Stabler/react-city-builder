@@ -1,35 +1,61 @@
-//import { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-// import SkylineDropdown from './SkylineDropdown';
-// import WaterfrontDropdown from './WaterfrontDropdown';
-// import CastleDropdown from './CastleDropdown';
-// import SloganList from './SloganList';
-// import SloganForm from './SloganForm';
-// import CityNameInput from './CityNameInput';
-// import City from './City';
+import Dropdown2 from './Dropdown2';
+import SloganList from './SloganList';
+import SloganForm from './SloganForm';
+import CityNameInput from './CityNameInput';
+import City from './City';
 
 function App() {
-  // track some state here.
+  const [skylineID, setSkylineID] = useState('skyline-1');
+  const [waterfrontID, setWaterfrontID] = useState('waterfront-1');
+  const [castleID, setCastleID] = useState('castle-1');
+  const [cityName, setCityName] = useState('St. Louis');
+  const [slogans, setSlogans] = useState([]);
+  const waterfrontOptions = [{ value: 'waterfront-1', display: 'Dock' }, { value: 'waterfront-2', display: 'Sunset' }, { value: 'waterfront-3', display: 'Boats' }];
+  const skylineOptions = [{ value: 'skyline-1', display: 'Pink' }, { value: 'skyline-2', display: 'Busy' }, { value: 'skyline-3', display: 'foggy' }];
+  const castleOptions = [{ value: 'castle-1', display: 'Serious' }, { value: 'castle-2', display: 'Mysterious' }, { value: 'castle-3', display: 'Regal' }];
+
+  function skylineHandleChange(e) {
+    setSkylineID(e.target.value);
+  }
+  function waterfrontHandleChange(e) {
+    setWaterfrontID(e.target.value);
+  }
+  function castleHandleChange(e) {
+    setCastleID(e.target.value);
+  }
+        // track some state here.
   // You'll need to keep track of a skylineId, waterfrontId, and castleId. All these start out as 1
   // you'll need to track a city name, which starts as the city name of your choice.
   // finally, you'll need an array of slogans, which could start out as ['The City of Excellence'] for example
 
   return (
     <div className="App">
+      <City waterfront={waterfrontID} skyline={skylineID} castle={castleID} /> 
       {/* here, the City component takes in skylineId, waterfrontId, castleId as props. It'll use those ids to render pictures correctly. */}
       <h1>
         {/* dynamically update the city name here using state */}
-        Welcome to beautiful Portland!
+        Welcome to beautiful {cityName}!
       </h1>
       <div className='bottom'>
         {/* here, the CityNameInput component takes in the setCityName state handler function */}
+        <CityNameInput setCityName={setCityName}/>
         <section className='dropdowns'>
+          {/* <WaterfrontDropdown setWaterfrontID={setWaterfrontID} />
+          <SkylineDropdown setSkylineID={setSkylineID} />
+          <CastleDropdown setCastleID={setCastleID} /> */}
+          <Dropdown2 options={waterfrontOptions} handleChange={waterfrontHandleChange} theme={'Waterfront'} />
+          <Dropdown2 options={skylineOptions} handleChange={skylineHandleChange} theme={'Skyline'} />
+          <Dropdown2 options={castleOptions} handleChange={castleHandleChange} theme={'Castle'} />
           {/* 
           render all three Dropdown components (WaterfrontDropdown, SkylineDropdown, CastleDropdown) here. 
           
           In each Dropdown, pass as props the state handler functions defined above, so that these child components can manipulate parent state 
           */}
         </section>
+        <SloganForm slogans={slogans} setSlogans={setSlogans} />
+        <SloganList slogans={slogans}/>
         {/* here, the SloganForm component takes in the setSlogans state handler function and the slogans array that live in state */}
         {/* here, the SloganList component takes the array of slogans that lives in state */}
 
