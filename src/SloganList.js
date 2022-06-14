@@ -1,4 +1,5 @@
 import React from 'react';
+import Slogan from './Slogan';
 
 export default function SloganList({ slogans }) {
   return (
@@ -6,7 +7,7 @@ export default function SloganList({ slogans }) {
       <h2>Your slogans:</h2>
       <ul>
         {
-          slogans.map((slogan, i) => <li key={slogan + i}>{slogan}</li>)
+          slogans.map((slogan, i) => <Slogan key={slogan + i} slogan={slogan} />)
         }
       </ul>
       {/* This kind of component should be familiar by now. It takes in (as props) an array of slogans */}
